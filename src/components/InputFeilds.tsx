@@ -7,7 +7,7 @@ interface Props {
 }
 const InputFeilds: React.FC<Props> = (todo: Props) => {
   return (
-    <form className="input">
+    <form className="input" onSubmit={todo.addMission}>
       <input
         value={todo.todo}
         onChange={(e) => todo.setTodo(e.target.value)}
@@ -15,7 +15,7 @@ const InputFeilds: React.FC<Props> = (todo: Props) => {
         placeholder="Enter Your Task"
         className="input__box"
       />
-      <button onClick={todo.addMission} className="input__submit" type="submit">
+      <button className="input__submit" type="submit">
         Go
       </button>
     </form>
