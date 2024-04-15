@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import "./Style.css";
+import InputFeilds from "./components/InputFeilds";
 
-import "./App.css";
-
-function App() {
+const App: React.FC = () => {
+  const [todo, setTodo] = useState<string>("");
+  const [mission, setMission] = useState<string[]>([]);
+  const addMission = (e: React.FormEvent): void => {
+    e.preventDefault();
+    setMission((prev) => [...prev, todo]);
+  };
+  console.log(mission);
   return (
-    <>
-      <h1>HELLO NEW REPO</h1>
-    </>
+    <div>
+      <InputFeilds todo={todo} setTodo={setTodo} addMission={addMission} />
+    </div>
   );
-}
-
+};
 export default App;
