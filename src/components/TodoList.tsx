@@ -2,15 +2,23 @@ import React from "react";
 import { DeleteOutlined, EditOutlined } from "@mui/icons-material";
 
 interface TodoListProps {
+  id: string;
   mission: string;
   created: Date;
-  addRandomBackground: string;
+  addRandomBackground1: string;
+  addRandomBackground2: string;
+  deleteFunction: (id: string) => void;
+  editFunction: (id: string) => void;
 }
 
 const TodoList: React.FC<TodoListProps> = ({
+  id,
   mission,
   created,
-  addRandomBackground,
+  addRandomBackground1,
+  addRandomBackground2,
+  deleteFunction,
+  editFunction,
 }) => {
   const formattedDate = created.toLocaleString("en-US", {
     year: "numeric",
@@ -24,21 +32,32 @@ const TodoList: React.FC<TodoListProps> = ({
   });
 
   return (
-    <div className="todo-item" style={{ backgroundColor: addRandomBackground }}>
+    <div
+      className="todo-item"
+      style={{
+        background: `linear-gradient(130deg, ${addRandomBackground1} 0%, ${addRandomBackground2} 100%)`,
+      }}
+    >
       {/* <span className="todo-span-style">{mission}</span> */}
       <div className="todo-item__content">
         <div className="todo-item__mission">
           <span
-            style={{ backgroundColor: addRandomBackground }}
+            style={{ backgroundColor: addRandomBackground1 }}
             className="todo-item__mission-status"
           ></span>
           {mission}
         </div>
         <div className="todo-item__buttons">
-          <button className="todo-item__button-delete">
+          <button
+            onClick={() => deleteFunction(id)}
+            className="todo-item__button-delete"
+          >
             <DeleteOutlined />
           </button>
-          <button className="todo-item__button-edit">
+          <button
+            onClick={() => editFunction(id)}
+            className="todo-item__button-edit"
+          >
             <EditOutlined />
           </button>
         </div>

@@ -1,6 +1,5 @@
 * {
   box-sizing: border-box;
-
 }
 
 :root {
@@ -13,7 +12,7 @@
 body {
   background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
   background-size: 400% 400%;
-  animation: gradient 60s ease infinite;
+  animation: gradient 40s ease infinite;
   height: 100vh;
   padding: 0;
   margin: 0;
@@ -87,12 +86,12 @@ body {
   font-size: 1rem;
   color: var(--primary);
   /* Use CSS variables */
-  font-weight: 700;
+  font-weight: 400;
 }
 
 .form__field:focus {
   padding-bottom: 6px;
-  font-weight: 700;
+  font-weight: 500;
   border-width: 3px;
   border-image: linear-gradient(to right, var(--primary), var(--secondary));
   /* Use CSS variables */
@@ -100,7 +99,10 @@ body {
 
 }
 
-.input {}
+.input {
+  display: grid;
+  place-items: center;
+}
 
 .form__field:required,
 .form__field:invalid {
@@ -108,18 +110,16 @@ body {
 }
 
 .todo-app {
-  width: fit-content;
+  min-width: 750px;
   padding: 40px;
   display: flex;
   gap: 40px;
   border: 1px solid rgba(0, 0, 0, 0.093);
   background: rgba(255, 255, 255, 0.2);
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 }
 
 .input__box:focus {
@@ -127,25 +127,27 @@ body {
 }
 
 .todo-container {
+  width: 60%;
   max-height: 500px;
   overflow-y: scroll;
   overflow-x: hidden;
-  width: 100%;
-  padding: 40px;
+  padding: 10px;
 }
 
 .todo-container::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 /* Track */
 .todo-container::-webkit-scrollbar-track {
   background: #ffffff15;
+  border-radius: 50px;
 }
 
 /* Handle */
 .todo-container::-webkit-scrollbar-thumb {
   background: #ffffff1d;
+  border-radius: 50px;
 }
 
 /* Handle on hover */
@@ -154,17 +156,20 @@ body {
 }
 
 .todo-item {
-  padding: 20px;
+  padding: 10px;
   border-radius: 5px;
   font-weight: 100;
   width: fit-content;
-  margin-left: 5px;
   position: relative;
   /* opacity: 0.5; */
   overflow: hidden;
-  margin: 20px;
   transition: .3s;
   width: 100%;
+  margin-bottom: 20px;
+}
+
+.todo-item:last-child {
+  margin-bottom: 0;
 }
 
 .todo-item:hover {
@@ -233,8 +238,8 @@ body {
 
 .input__submit {
   all: unset;
-  width: 100px;
-  height: 30px;
+  /* width: 100px;
+  height: 30px; */
   font-size: 16px;
   background: transparent;
   border: none;
@@ -275,8 +280,7 @@ body {
   width: 35px;
   height: 35px;
   background: #ffffff15;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+
   border-radius: 50px;
 }
 
