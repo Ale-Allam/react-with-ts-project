@@ -2,8 +2,7 @@ export interface Todo {
   id: string;
   mission: string;
   isDone: boolean;
-  background1: string;
-  background2: string;
+  background: string;
   created: Date;
-  edited?: Date; // Optional property for last edit timestamp
+  edited?: Date;
 }

@@ -1,20 +1,27 @@
 import React, { useRef } from "react";
 
 interface InputFieldsProps {
+  id: string;
   todo: string;
+  isEdite: boolean;
   addMission(e: React.FormEvent): void;
+  editMission(id: string, e?: React.FormEvent): void;
   setTodo: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const InputFeilds: React.FC<InputFieldsProps> = ({
+  id,
   todo,
+  isEdite,
   addMission,
+  editMission,
   setTodo,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    addMission(e);
+
+    isEdite ? editMission(id, e) : addMission(e);
 
     inputRef.current?.blur();
   };
@@ -39,7 +46,7 @@ const InputFeilds: React.FC<InputFieldsProps> = ({
           </label>
         </div>
         <button className="input__submit" type="submit">
-          Button 29
+          {isEdite ? "Edite" : "Add"}
         </button>
       </div>
     </form>

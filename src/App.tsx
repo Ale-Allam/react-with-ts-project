@@ -12,18 +12,18 @@ const getLocalStorage = (): Todo[] => {
 const App: React.FC = () => {
   const [todo, setTodo] = useState<string>("");
   const [mission, setMission] = useState<Todo[]>(getLocalStorage);
-  // localStorage.clear();
+  const [isEdit, setIsEdit] = useState<boolean>(false);
+  const [editMissionID, setEditMissionID] = useState<string>("");
+
   useEffect(() => {
     window.localStorage.setItem("missions", JSON.stringify(mission));
   }, [mission]);
-  function getRandomBackground(): string[] {
+
+  function getRandomBackground(): string {
     let getDegree = Math.floor(Math.random() * 395);
-    // `hsl(${getDegree}deg 90% 61.57%)`
-    return [
-      `hsl(${getDegree}deg 52.04% 61.57%)`,
-      `hsl(${getDegree}deg 80% 61.57%)`,
-    ];
+    return `hsl(${getDegree}deg 36.65% 68.43%)`;
   }
+
   const addMission = (e: React.FormEvent): void => {
     e.preventDefault();
     if (todo) {
@@ -34,13 +34,13 @@ const App: React.FC = () => {
           mission: todo,
           isDone: false,
           created: new Date(),
-          background1: getRandomBackground()[0],
-          background2: getRandomBackground()[1],
+          background: getRandomBackground(),
         },
       ]);
       setTodo("");
     }
   };
+
   function deleteFunction(id: string) {
     setMission((prev) => prev.filter((el) => el.id !== id));
   }
@@ -48,10 +48,31 @@ const App: React.FC = () => {
   function editFunction(id: string) {
     let theEdit = mission.filter((el) => el.id === id);
     setTodo(theEdit[0].mission);
+    setEditMissionID(theEdit[0].id);
+    setIsEdit(true);
   }
+
+  const editMission = (id: string, e?: React.FormEvent): void => {
+    e?.preventDefault();
+    if (todo) {
+      setMission((prev) =>
+        prev.map((el) => (el.id === id ? { ...el, mission: todo } : el))
+      );
+    }
+    setTodo("");
+    setIsEdit(false);
+  };
+
   return (
     <div className="todo-app">
-      <InputFeilds todo={todo} setTodo={setTodo} addMission={addMission} />
+      <InputFeilds
+        id={editMissionID}
+        todo={todo}
+        setTodo={setTodo}
+        addMission={addMission}
+        isEdite={isEdit}
+        editMission={(id) => editMission(id)}
+      />
 
       <div className="todo-container">
         {mission.length === 0 ? (
@@ -66,8 +87,7 @@ const App: React.FC = () => {
               id={element.id}
               mission={element.mission}
               created={element.created}
-              addRandomBackground1={element.background1}
-              addRandomBackground2={element.background2}
+              addRandomBackground={element.background}
               deleteFunction={(id) => deleteFunction(id)}
               editFunction={(id) => editFunction(id)}
             />

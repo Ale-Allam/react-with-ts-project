@@ -3,41 +3,23 @@
 }
 
 :root {
-  --primary: #11998e;
-  --secondary: #38ef7d;
+  --primary: #778A35;
+  --secondary: #D1E2C4;
   --white: #fff;
   --white: #ffffff;
 }
 
 body {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: gradient 40s ease infinite;
   height: 100vh;
   padding: 0;
   margin: 0;
   display: grid;
   place-items: center;
   font-family: "Montserrat", sans-serif;
+  background-color: #ECF2F7;
 }
 
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
 
-  50% {
-    background-position: 100% 50%;
-  }
-
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Define colors */
-
-/* Form styles */
 .form__group {
   position: relative;
   padding: 15px 0 0;
@@ -47,7 +29,7 @@ body {
 
 .form__field {
   border: 0;
-  border-bottom: 2px solid var(--white);
+  border-bottom: 2px solid #232425;
   outline: 0;
   font-size: 1.3rem;
   color: var(--white);
@@ -59,7 +41,6 @@ body {
 
 .form__field::placeholder {
   color: transparent;
-
 }
 
 .form__field:placeholder-shown~.form__label {
@@ -74,8 +55,7 @@ body {
   display: block;
   transition: 0.5s;
   font-size: 1rem;
-  color: var(--white);
-  /* Use CSS variables */
+  color: #232425;
 }
 
 .form__field:focus~.form__label,
@@ -85,7 +65,6 @@ body {
   transition: 0.3s;
   font-size: 1rem;
   color: var(--primary);
-  /* Use CSS variables */
   font-weight: 400;
 }
 
@@ -94,7 +73,6 @@ body {
   font-weight: 500;
   border-width: 3px;
   border-image: linear-gradient(to right, var(--primary), var(--secondary));
-  /* Use CSS variables */
   border-image-slice: 1;
 
 }
@@ -117,9 +95,9 @@ body {
   border: 1px solid rgba(0, 0, 0, 0.093);
   background: rgba(255, 255, 255, 0.2);
   border-radius: 16px;
-
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+  background-color: #D4D9DD;
 }
 
 .input__box:focus {
@@ -138,19 +116,16 @@ body {
   width: 8px;
 }
 
-/* Track */
 .todo-container::-webkit-scrollbar-track {
   background: #ffffff15;
   border-radius: 50px;
 }
 
-/* Handle */
 .todo-container::-webkit-scrollbar-thumb {
   background: #ffffff1d;
   border-radius: 50px;
 }
 
-/* Handle on hover */
 .todo-container::-webkit-scrollbar-thumb:hover {
   background: var(--primary);
 }
@@ -161,7 +136,6 @@ body {
   font-weight: 100;
   width: fit-content;
   position: relative;
-  /* opacity: 0.5; */
   overflow: hidden;
   transition: .3s;
   width: 100%;
@@ -174,6 +148,28 @@ body {
 
 .todo-item:hover {
   scale: 1.02;
+}
+
+.todo-item::before,
+.todo-item::after {
+  content: "";
+  background-color: #ffffff36;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.todo-item::before {
+  width: 200px;
+  height: 200px;
+  right: -80px;
+  top: -100px;
+}
+
+.todo-item::after {
+  width: 40px;
+  height: 40px;
+  right: 115px;
+  top: 35px;
 }
 
 .todo-span-style {
@@ -190,12 +186,12 @@ body {
 .todo-item__content,
 .todo-item__timestamp {
   max-width: 90%;
+  color: var(--white);
 }
 
 .todo-item__mission {
   font-size: 24px;
   font-weight: 500;
-  color: black;
 }
 
 .todo-item__buttons {
@@ -233,13 +229,10 @@ body {
 .todo-item__timestamp {
   font-size: 11px;
   font-weight: 300;
-  color: black;
 }
 
 .input__submit {
   all: unset;
-  /* width: 100px;
-  height: 30px; */
   font-size: 16px;
   background: transparent;
   border: none;

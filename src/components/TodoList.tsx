@@ -5,8 +5,7 @@ interface TodoListProps {
   id: string;
   mission: string;
   created: Date;
-  addRandomBackground1: string;
-  addRandomBackground2: string;
+  addRandomBackground: string;
   deleteFunction: (id: string) => void;
   editFunction: (id: string) => void;
 }
@@ -15,8 +14,7 @@ const TodoList: React.FC<TodoListProps> = ({
   id,
   mission,
   created,
-  addRandomBackground1,
-  addRandomBackground2,
+  addRandomBackground,
   deleteFunction,
   editFunction,
 }) => {
@@ -32,17 +30,12 @@ const TodoList: React.FC<TodoListProps> = ({
   });
 
   return (
-    <div
-      className="todo-item"
-      style={{
-        background: `linear-gradient(130deg, ${addRandomBackground1} 0%, ${addRandomBackground2} 100%)`,
-      }}
-    >
+    <div className="todo-item" style={{ backgroundColor: addRandomBackground }}>
       {/* <span className="todo-span-style">{mission}</span> */}
       <div className="todo-item__content">
         <div className="todo-item__mission">
           <span
-            style={{ backgroundColor: addRandomBackground1 }}
+            style={{ backgroundColor: addRandomBackground }}
             className="todo-item__mission-status"
           ></span>
           {mission}
