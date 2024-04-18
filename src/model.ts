@@ -3,6 +3,6 @@ export interface Todo {
   mission: string;
   isDone: boolean;
   background: string;
-  created: Date;
+  created: string;
   edited?: Date;
 }

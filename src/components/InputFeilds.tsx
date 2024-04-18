@@ -27,7 +27,7 @@ const InputFeilds: React.FC<InputFieldsProps> = ({
   };
 
   return (
-    <form className="input" onSubmit={handleSubmit}>
+    <form className="" onSubmit={handleSubmit}>
       <div>
         <div className="form__group field">
           <input
@@ -35,7 +35,7 @@ const InputFeilds: React.FC<InputFieldsProps> = ({
             value={todo}
             onChange={(e) => setTodo(e.target.value)}
             type="text"
-            placeholder="Enter Your Task"
+            placeholder=""
             className="form__field"
             name="name"
             id="name"
